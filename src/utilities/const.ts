@@ -1,3 +1,4 @@
+import { NotificationArgsProps } from 'antd';
 import { QueryClient } from 'react-query';
 
 export const { VITE_APP_API_URL_LOCAL } = import.meta.env;
@@ -14,3 +15,8 @@ export const queryClient = new QueryClient({
     },
   },
 });
+
+export const DEFAULT_NOTIFICAION_PROPS: Partial<NotificationArgsProps> = {
+  placement: 'top',
+  duration: 5000,
+};

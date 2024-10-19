@@ -2,6 +2,8 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { notification } from 'antd';
+import { DEFAULT_NOTIFICAION_PROPS } from './const';
 
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
@@ -17,3 +19,9 @@ export const calculateTimeDifference = (hireDate: string): string => {
 
   return `${years}y - ${months}m - ${days}d`;
 };
+
+export const showNoti = (type: 'error' | 'success', message: string) =>
+  notification[type]({
+    message,
+    ...DEFAULT_NOTIFICAION_PROPS,
+  });

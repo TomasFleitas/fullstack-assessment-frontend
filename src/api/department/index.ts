@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import api, { QueryApiService } from '..';
 import { Employee } from 'api/employee';
 
-const BASE_URL = 'departments';
+const BASE_URL = 'department';
 
 export interface Department {
   id: number;
@@ -16,11 +16,13 @@ export interface DepartmentHistory {
   changedAt: string;
 }
 
-export const getDepartments = (): QueryApiService<
-  AxiosResponse<Department[]>
-> => {
+const getDepartments = (): QueryApiService<AxiosResponse<Department[]>> => {
   return {
     queryKey: [BASE_URL],
     queryFn: () => api.get(BASE_URL),
   };
+};
+
+export const deparmentsApi = {
+  getDepartments,
 };

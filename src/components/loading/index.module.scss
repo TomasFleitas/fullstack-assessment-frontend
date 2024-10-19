@@ -1,0 +1,13 @@
+.loading {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  > span:nth-child(1) {
+    margin: auto;
+    svg {
+      font-size: 50px;
+    }
+  }
+}
