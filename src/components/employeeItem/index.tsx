@@ -1,12 +1,12 @@
-import { Employee } from 'api/employee';
 import style from './index.module.scss';
 import { calculateTimeDifference } from 'utilities/tools';
 import dayjs from 'dayjs';
-import CustomButton from 'components/button';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from 'routers/routeData';
-
 import { DeleteEmployeeModal } from 'components/deleteEmployeeModal';
+import { Button } from 'antd';
+import { Avatar } from 'components';
+import { EmployeeStatusEnum } from 'utilities/enums';
 
 type EmployeeProps = {
   employee: Employee;
@@ -23,12 +23,16 @@ export const EmployeeItem = ({ employee }: EmployeeProps) => {
 
   return (
     <div className={style['employee-card']}>
-      <div className={style['employee-avatar']} />
+      <Avatar
+        size={'small'}
+        photoUrl={employee.photoUrl}
+        isActive={employee.status === EmployeeStatusEnum.ACTIVE}
+      />
       <div className={style['employee-details']}>
         <p className={style['employee-name']}>
           {employee.firstName} {employee.lastName}
           <span className={style['employee-department']}>
-            ({employee.department.name})
+            ({employee.department?.name})
           </span>
         </p>
         <div className={style['employee-hire-date']}>
@@ -37,7 +41,9 @@ export const EmployeeItem = ({ employee }: EmployeeProps) => {
         </div>
       </div>
       <div className={style['employee-actions']}>
-        <CustomButton onClick={goToDetail}>View Details</CustomButton>
+        <Button type="primary" onClick={goToDetail}>
+          View Details
+        </Button>
         <DeleteEmployeeModal employee={employee} />
       </div>
     </div>

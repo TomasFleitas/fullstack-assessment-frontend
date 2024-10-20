@@ -1,10 +1,11 @@
 import { Modal, Form, Input, Select, DatePicker } from 'antd';
-import { CreateEmployee, employeeApi, getAllKey } from 'api/employee';
+import { employeeApi } from 'api/employee';
+import { getAllKey } from 'api/employee/emploee.keys';
 import dayjs from 'dayjs';
 import { useDepartments } from 'hook/useDepartments';
 import { useMutation } from 'react-query';
 import { queryClient } from 'utilities/const';
-import { showNoti } from 'utilities/tools';
+import { disableFutureDates, showNoti } from 'utilities/tools';
 
 const { Option } = Select;
 
@@ -83,7 +84,10 @@ export const CreateEmployeeModal = ({
           label="Hire Date"
           rules={[{ required: true, message: 'Please select the hire date' }]}
         >
-          <DatePicker style={{ width: '100%' }} />
+          <DatePicker
+            disabledDate={disableFutureDates}
+            style={{ width: '100%' }}
+          />
         </Form.Item>
         <Form.Item
           name="departmentId"

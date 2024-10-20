@@ -1,42 +1,43 @@
 .employee-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ddd;
+  justify-content: center;
+  border: 1px solid var(--color-border);
   padding: 1rem;
+  flex-wrap: wrap;
+  gap: 20px;
   border-radius: 0.5rem;
-
-  .employee-avatar {
-    width: 100px;
-    height: 100%;
-    background-color: #aaf;
-    border-radius: 10px;
-  }
+  min-width: 300px;
 
   .employee-details {
     flex-grow: 1;
-    margin-left: 1rem;
+    align-self: start;
+    min-width: 275px;
 
     .employee-name {
       font-size: 1.1rem;
       font-weight: bold;
+      margin-bottom: 5px;
     }
 
     .employee-department {
       font-style: italic;
       font-size: 0.9rem;
-      margin-left: 0.5rem;
+      margin-left: 10px;
     }
 
     .employee-hire-date {
       font-size: 0.9rem;
       color: gray;
+      p {
+        margin: 0;
+      }
     }
   }
-  
+
   .employee-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
   }
 }

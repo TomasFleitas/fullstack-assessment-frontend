@@ -1,14 +1,34 @@
 .department-history {
-  h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    margin: 0;
-    color: gray;
-  }
+  padding: 1rem;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  min-width: 285px;
 
-  .ant-table {
-    width: 100%;
-    border-radius: 0.5rem;
-    border: 1px solid #ddd;
+  .department-history-list {
+    padding: 0;
+    overflow: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .department-history-item {
+      padding: 0.75rem;
+      background-color: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .history-date,
+      .history-department {
+        font-size: 0.9rem;
+        color: #333;
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Employee, employeeApi, getDepartmentsHistoryKey } from 'api/employee';
+import { employeeApi } from 'api/employee';
+import { getAllKey, getDepartmentsHistoryKey } from 'api/employee/emploee.keys';
 import { useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { useLocation, useParams } from 'react-router-dom';
@@ -36,6 +37,7 @@ export const useEmployee = () => {
       ...employeeApi.updateDepartment(),
       onSuccess: ({ data }) => {
         queryClient.refetchQueries(getDepartmentsHistoryKey(employee.id));
+        queryClient.refetchQueries(getAllKey);
         setEmployee(data);
         showNoti('success', 'Department successfully changed.');
       },
@@ -47,6 +49,7 @@ export const useEmployee = () => {
     setEmployee,
     isFetching,
     isUpdating,
+    isActive: employee.status === EmployeeStatusEnum.ACTIVE,
     error,
     updateEmployeeDepartment: departmentId =>
       innerUpdateEmployeeDepartment({ id: employee.id, departmentId }),

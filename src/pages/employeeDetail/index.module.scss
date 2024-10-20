@@ -3,52 +3,29 @@
   flex-direction: column;
   gap: 30px;
   padding: 2rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
+  padding-top: 1rem;
   width: 100%;
-  max-width: 900px;
-  margin: auto;
+  overflow: auto;
+  height: 100%;
 
   .employee-container {
     display: flex;
-    justify-content: space-between;
-    height: 300px;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
 
-    .employee-avatar {
-      width: 300px;
-      height: 300px;
-      flex-shrink: 0;
-      background-color: #aaf;
-      border-radius: 10px;
-      position: relative;
-      display: flex;
-
-      .inactive-label {
-        position: absolute;
-        bottom: 10px;
-        width: 90%;
-        background-color: rgb(255, 94, 0);
-        color: white;
-        text-align: center;
-        padding: 5px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 5px;
-      }
-    }
-
     .employee-info {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
-      gap: 10px;
+      gap: 20px;
       justify-content: space-between;
       flex-direction: column;
 
       .employee-data {
         display: flex;
         width: 100%;
+        flex-wrap: wrap;
+        gap: 20px;
         justify-content: space-between;
 
         .employee-personal-info {
@@ -57,7 +34,7 @@
           h2 {
             font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
           }
 
           p {
@@ -76,18 +53,8 @@
             font-size: 0.9rem;
             color: gray;
           }
-
-          .deactivate-button {
-            background-color: #ff4d4f;
-            color: white;
-            padding: 0.5rem 1rem;
-            font-weight: bold;
-            border-radius: 0.25rem;
-            border: none;
-          }
-
-          .deactivate-button:hover {
-            background-color: darkred;
+          > button {
+            margin-top: 10px;
           }
         }
       }
@@ -95,25 +62,16 @@
   }
 }
 
-@media (max-width: 768px) {
-  .employee-header {
-    flex-direction: column;
-    align-items: flex-start;
-
-    .employee-info {
-      margin-left: 0;
-      margin-top: 1rem;
+@media (max-width: 590px) {
+  .employee-detail {
+    .employee-container {
+      .employee-info {
+        .employee-data {
+          .employee-status {
+            text-align: left;
+          }
+        }
+      }
     }
-
-    .employee-status {
-      text-align: left;
-      margin-top: 1rem;
-    }
-  }
-
-  .employee-actions {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
   }
 }

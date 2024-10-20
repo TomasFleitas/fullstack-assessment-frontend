@@ -36,7 +36,7 @@ export const DepartmentSelector = ({
             </Option>
           ))}
         </Select>
-        <Button disabled={isDisable} onClick={innerOnUpdate}>
+        <Button type="primary" disabled={isDisable} onClick={innerOnUpdate}>
           Update
         </Button>
       </div>

@@ -1,4 +1,5 @@
-import { EmployeeDetail, EmployeeList } from 'pages';
+import { EmployeeDetailPage, EmployeeListPage } from 'pages';
+import LoginPage from 'pages/login';
 
 export const ROUTE = {
   root: '/',
@@ -6,13 +7,24 @@ export const ROUTE = {
   employeeDetail: '/employee/:id',
 };
 
-export const ROUTES_DATA = [
-  {
-    path: ROUTE.employeeList,
-    component: <EmployeeList />,
-  },
-  {
-    path: ROUTE.employeeDetail,
-    component: <EmployeeDetail />,
-  },
-];
+export const ROUTES_DATA = {
+  public: [],
+
+  private: [
+    {
+      path: ROUTE.employeeList,
+      component: <EmployeeListPage />,
+    },
+    {
+      path: ROUTE.employeeDetail,
+      component: <EmployeeDetailPage />,
+    },
+  ],
+
+  publicNotAllowBack: [
+    {
+      path: ROUTE.root,
+      component: <LoginPage />,
+    },
+  ],
+};

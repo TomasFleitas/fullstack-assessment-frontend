@@ -1,41 +1,12 @@
 import { AxiosResponse } from 'axios';
 import api, { MutateApiService, QueryApiService } from '..';
-import { Department, DepartmentHistory } from 'api/department';
 import { EmployeeStatusEnum } from 'utilities/enums';
-
-const BASE_URL = 'employees';
-
-export interface Employee {
-  id: number;
-  firstName: string;
-  lastName: string;
-  hireDate: string;
-  department: Department;
-  status: EmployeeStatusEnum;
-  phone: string;
-  address: string;
-  departmentHistory?: DepartmentHistory[];
-}
-
-export interface CreateEmployee {
-  firstName: string;
-  lastName: string;
-  hireDate: string;
-  departmentId: number;
-  phone?: string;
-  address: string;
-}
-
-export interface UpdateEmployee {
-  firstName?: string;
-  lastName?: string;
-  hireDate?: string;
-  departmentId?: number;
-  phone?: string;
-  address?: string;
-}
-
-export const getAllKey = [BASE_URL];
+import {
+  BASE_URL,
+  getAllKey,
+  getDepartmentsHistoryKey,
+  getKey,
+} from './emploee.keys';
 
 const getAll = (): QueryApiService<AxiosResponse<Employee[]>> => {
   return {
@@ -44,20 +15,12 @@ const getAll = (): QueryApiService<AxiosResponse<Employee[]>> => {
   };
 };
 
-export const getKey = (id: string | number) => [BASE_URL, id];
-
 const get = (id: string | number): QueryApiService<AxiosResponse<Employee>> => {
   return {
     queryKey: getKey(id),
     queryFn: () => api.get(`${BASE_URL}/${id}`),
   };
 };
-
-export const getDepartmentsHistoryKey = (id: number | string) => [
-  BASE_URL,
-  id,
-  'department-history',
-];
 
 const getDepartmentsHistory = (
   id: string | number,

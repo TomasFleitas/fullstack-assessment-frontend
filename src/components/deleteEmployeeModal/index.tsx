@@ -1,9 +1,10 @@
 import { Modal, Button } from 'antd';
 import { ExclamationCircleOutlined, CloseOutlined } from '@ant-design/icons';
-import { Employee, employeeApi, getAllKey } from 'api/employee';
+import { employeeApi } from 'api/employee';
 import { showNoti } from 'utilities/tools';
 import { useMutation } from 'react-query';
 import { queryClient } from 'utilities/const';
+import { getAllKey } from 'api/employee/emploee.keys';
 
 const { confirm } = Modal;
 

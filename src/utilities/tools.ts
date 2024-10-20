@@ -25,3 +25,7 @@ export const showNoti = (type: 'error' | 'success', message: string) =>
     message,
     ...DEFAULT_NOTIFICAION_PROPS,
   });
+
+export const disableFutureDates = (current: dayjs.Dayjs) => {
+  return current && current.isAfter(dayjs().endOf('day'));
+};

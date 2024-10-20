@@ -1,20 +1,6 @@
 import { AxiosResponse } from 'axios';
 import api, { QueryApiService } from '..';
-import { Employee } from 'api/employee';
-
-const BASE_URL = 'department';
-
-export interface Department {
-  id: number;
-  name: string;
-  employees?: Employee[];
-}
-
-export interface DepartmentHistory {
-  id: number;
-  department: Department;
-  changedAt: string;
-}
+import { BASE_URL } from './department.keys';
 
 const getDepartments = (): QueryApiService<AxiosResponse<Department[]>> => {
   return {

@@ -20,3 +20,5 @@ export const DEFAULT_NOTIFICAION_PROPS: Partial<NotificationArgsProps> = {
   placement: 'top',
   duration: 5000,
 };
+
+export const PRIMARY_COLOR = '#91d568';
