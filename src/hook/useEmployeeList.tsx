@@ -2,7 +2,7 @@ import { employeeApi } from 'api/employee';
 import { useQuery } from 'react-query';
 
 export const useEmployeeList = () => {
-  const { isFetching, data: employees = [] } = useQuery({
+  const { isLoading, data: employees = [] } = useQuery({
     ...employeeApi.getAll(),
     refetchOnWindowFocus: false,
     select: ({ data }) => data,
@@ -10,6 +10,6 @@ export const useEmployeeList = () => {
 
   return {
     employees,
-    isFetching,
+    isLoading,
   };
 };

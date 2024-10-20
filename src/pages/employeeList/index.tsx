@@ -1,6 +1,6 @@
 import style from './index.module.scss';
 import { EmployeeItem } from 'components/employeeItem';
-import { CreateEmployeeModal } from 'components/createEmployeeModal';
+import { CreateEditEmployeeModal } from 'components/createEditEmployeeModal';
 import { useState } from 'react';
 import { useEmployeeList } from 'hook/useEmployeeList';
 import { Layout, Loading } from 'components';
@@ -8,7 +8,7 @@ import { Button, Empty } from 'antd';
 
 export const EmployeeListPage = () => {
   const [open, setOpen] = useState(false);
-  const { employees, isFetching } = useEmployeeList();
+  const { employees, isLoading } = useEmployeeList();
 
   return (
     <Layout>
@@ -18,7 +18,7 @@ export const EmployeeListPage = () => {
             New Employee
           </Button>
         </div>
-        {(!isFetching && (
+        {(!isLoading && (
           <div className={style['employee-list-scroll']}>
             {(!!employees.length &&
               employees?.map(employee => (
@@ -26,7 +26,7 @@ export const EmployeeListPage = () => {
               ))) || <Empty className={style.empty} />}
           </div>
         )) || <Loading />}
-        <CreateEmployeeModal open={open} onCancel={() => setOpen(false)} />
+        <CreateEditEmployeeModal open={open} onCancel={() => setOpen(false)} />
       </div>
     </Layout>
   );
